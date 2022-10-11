@@ -81,21 +81,23 @@ class HomePage extends React.Component {
               <h1 className="titleHeader">F</h1>
             </div>
             <h3 className="categoriesTitle">Categorias</h3>
-            <ul>
-              { categories.map((categorie) => (
-                <li key={ categorie.id }>
-                  <button
-                    type="button"
-                    data-testid="category"
-                    onClick={ () => this.getProductsFromCategoryAP(categorie.id) }
-                    className="categoriesLi"
-                  >
-                    { categorie.name }
-                  </button>
-                  <br />
-                </li>
-              ))}
-            </ul>
+            <div className="categoriesUl">
+              <ul>
+                { categories.map((categorie) => (
+                  <li key={ categorie.id }>
+                    <button
+                      type="button"
+                      data-testid="category"
+                      onClick={ () => this.getProductsFromCategoryAP(categorie.id) }
+                      className="categoriesLi"
+                    >
+                      { categorie.name }
+                    </button>
+                    <br />
+                  </li>
+                ))}
+              </ul>
+            </div>
           </div>
           <ul>
             {stateCategory && productsFromCategory
