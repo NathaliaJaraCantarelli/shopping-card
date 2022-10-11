@@ -52,53 +52,68 @@ class HomePage extends React.Component {
     const { list, categories, valueInput, stateResearch,
       productsFromCategory, stateCategory } = this.state;
     return (
-      <>
-        <div className="containerGeral">
-          <header className="containerHeader">
-            {/* <div>
-              <h1 className="titleHeader">F</h1>
-            </div> */}
-            <div>
-              { list && (
-                <label htmlFor="inputSearch">
-                  {/* Digite algum termo de pesquisa ou escolha uma categoria. */}
-                  <input
-                    type="text"
-                    data-testid="home-initial-message"
-                    className="inputSearch"
-                    placeholder="Digite algum termo de pesquisa ou escolha uma categoria."
-                  />
-                </label>) }
-              <Link
-                to="/shopping-card"
-                data-testid="shopping-cart-button"
-                className="btnCart"
-              />
-            </div>
-          </header>
-          <div className="containerCategories">
-            <div>
-              <h1 className="titleHeader">F</h1>
-            </div>
-            <h3 className="categoriesTitle">Categorias</h3>
-            <div className="categoriesUl">
-              <ul>
-                { categories.map((categorie) => (
-                  <li key={ categorie.id }>
-                    <button
-                      type="button"
-                      data-testid="category"
-                      onClick={ () => this.getProductsFromCategoryAP(categorie.id) }
-                      className="categoriesLi"
-                    >
-                      { categorie.name }
-                    </button>
-                    <br />
-                  </li>
-                ))}
-              </ul>
-            </div>
+      <div className="containerGeral">
+        <header className="containerHeader">
+          <div className="containerSearch">
+            { list && (
+              <label
+                htmlFor="inputSearch"
+                data-testid="home-initial-message"
+                className="inputSearchLabel"
+              >
+                {' '}
+                Digite algum termo de pesquisa ou escolha uma categoria.
+                <input
+                  type="text"
+                  data-testid="query-input"
+                  className="inputSearch"
+                  id="inputSearch"
+                  value={ valueInput }
+                  onChange={ this.addValueInput }
+                  placeholder="Digite algum termo de pesquisa ou escolha uma categoria."
+                />
+              </label>) }
+            <button
+              type="button"
+              data-testid="query-button"
+              className="btnSearch"
+              onClick={ this.getProductsFromCategoryAndQueryAPI }
+            >
+              Buscar
+            </button>
           </div>
+          <div className="containerBtnCart">
+          <Link
+            to="/shopping-card"
+            data-testid="shopping-cart-button"
+            className="btnCart"
+          />
+          </div>
+        </header>
+        <div className="containerCategories">
+          <div>
+            <h1 className="titleHeader">F</h1>
+          </div>
+          <h3 className="categoriesTitle">Categorias</h3>
+          <div className="categoriesUl">
+            <ul>
+              { categories.map((categorie) => (
+                <li key={ categorie.id }>
+                  <button
+                    type="button"
+                    data-testid="category"
+                    onClick={ () => this.getProductsFromCategoryAP(categorie.id) }
+                    className="categoriesLi"
+                  >
+                    { categorie.name }
+                  </button>
+                  <br />
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+        <div className="containerContent">
           <ul>
             {stateCategory && productsFromCategory
               .map((product) => (
@@ -110,21 +125,6 @@ class HomePage extends React.Component {
                   <img src={ product.thumbnail } alt={ product.title } />
                 </li>))}
           </ul>
-        </div>
-        <div>
-          <input
-            type="text"
-            data-testid="query-input"
-            value={ valueInput }
-            onChange={ this.addValueInput }
-          />
-          <button
-            type="button"
-            data-testid="query-button"
-            onClick={ this.getProductsFromCategoryAndQueryAPI }
-          >
-            Buscar
-          </button>
           { stateResearch ? <p data-testid="product">Nenhum produto foi encontrado</p> : (
             <ul>
               { list.map((item) => (
@@ -141,7 +141,8 @@ class HomePage extends React.Component {
               ))}
             </ul>)}
         </div>
-      </>
+      </div>
+      // </>
     );
   }
 }
