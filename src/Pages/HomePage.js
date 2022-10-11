@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { getCategories, getProductsFromCategoryAndQuery, getProductById }
   from '../services/api';
+import './homePage.css';
 
 class HomePage extends React.Component {
   constructor() {
@@ -52,30 +53,50 @@ class HomePage extends React.Component {
       productsFromCategory, stateCategory } = this.state;
     return (
       <>
-        <div>
-          { list && (
-            <p
-              data-testid="home-initial-message"
-            >
-              Digite algum termo de pesquisa ou escolha uma categoria.
-            </p>) }
-          <Link to="/shopping-card" data-testid="shopping-cart-button">
-            Carrinho de compras
-          </Link>
-          <ul>
-            { categories.map((categorie) => (
-              <li key={ categorie.id }>
-                <button
-                  type="button"
-                  data-testid="category"
-                  onClick={ () => this.getProductsFromCategoryAP(categorie.id) }
-                >
-                  { categorie.name }
-                </button>
-                <br />
-              </li>
-            ))}
-          </ul>
+        <div className="containerGeral">
+          <header className="containerHeader">
+            {/* <div>
+              <h1 className="titleHeader">F</h1>
+            </div> */}
+            <div>
+              { list && (
+                <label htmlFor="inputSearch">
+                  {/* Digite algum termo de pesquisa ou escolha uma categoria. */}
+                  <input
+                    type="text"
+                    data-testid="home-initial-message"
+                    className="inputSearch"
+                    placeholder="Digite algum termo de pesquisa ou escolha uma categoria."
+                  />
+                </label>) }
+              <Link
+                to="/shopping-card"
+                data-testid="shopping-cart-button"
+                className="btnCart"
+              />
+            </div>
+          </header>
+          <div className="containerCategories">
+            <div>
+              <h1 className="titleHeader">F</h1>
+            </div>
+            <h3 className="categoriesTitle">Categorias</h3>
+            <ul>
+              { categories.map((categorie) => (
+                <li key={ categorie.id }>
+                  <button
+                    type="button"
+                    data-testid="category"
+                    onClick={ () => this.getProductsFromCategoryAP(categorie.id) }
+                    className="categoriesLi"
+                  >
+                    { categorie.name }
+                  </button>
+                  <br />
+                </li>
+              ))}
+            </ul>
+          </div>
           <ul>
             {stateCategory && productsFromCategory
               .map((product) => (
