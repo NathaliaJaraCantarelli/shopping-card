@@ -28,6 +28,7 @@ class HomePage extends React.Component {
 
   getProductsFromCategoryAndQueryAPI = async () => {
     const { valueInput } = this.state;
+    this.setState({ stateCategory: false });
     const researchReturn = await getProductsFromCategoryAndQuery(valueInput, valueInput);
     if ((researchReturn === undefined) || (researchReturn.results.length === 0)) {
       this.setState({ stateResearch: true });
@@ -61,7 +62,6 @@ class HomePage extends React.Component {
                 data-testid="home-initial-message"
                 className="inputSearchLabel"
               >
-                {' '}
                 Digite algum termo de pesquisa ou escolha uma categoria.
                 <input
                   type="text"
@@ -83,11 +83,11 @@ class HomePage extends React.Component {
             </button>
           </div>
           <div className="containerBtnCart">
-          <Link
-            to="/shopping-card"
-            data-testid="shopping-cart-button"
-            className="btnCart"
-          />
+            <Link
+              to="/shopping-card"
+              data-testid="shopping-cart-button"
+              className="btnCart"
+            />
           </div>
         </header>
         <div className="containerCategories">
@@ -95,8 +95,8 @@ class HomePage extends React.Component {
             <h1 className="titleHeader">F</h1>
           </div>
           <h3 className="categoriesTitle">Categorias</h3>
-          <div className="categoriesUl">
-            <ul>
+          <div className="categoriesDiv">
+            <ul className="categoriesUl">
               { categories.map((categorie) => (
                 <li key={ categorie.id }>
                   <button
@@ -114,32 +114,44 @@ class HomePage extends React.Component {
           </div>
         </div>
         <div className="containerContent">
-          <ul>
+          <ul hidden={ !stateCategory } className="productTable">
             {stateCategory && productsFromCategory
               .map((product) => (
-                <li key={ product.id } data-testid="product">
+                <li key={ product.id } data-testid="product" className="productItem">
+                  <img src={ product.thumbnail } alt={ product.title } />
+                  <br />
                   <Link to={ `/product/${product.id}` } data-testid="product-detail-link">
                     {product.title}
+                    <br />
+                    <br />
+                    R$
+                    {' '}
                     {product.price}
                   </Link>
-                  <img src={ product.thumbnail } alt={ product.title } />
                 </li>))}
           </ul>
-          { stateResearch ? <p data-testid="product">Nenhum produto foi encontrado</p> : (
-            <ul>
-              { list.map((item) => (
-                <li key={ item.id } data-testid="product">
-                  <Link to={ `/product/${item.id}` } data-testid="product-detail-link">
-                    { item.title }
-                    <br />
-                    { item.price }
-                    <br />
+          {stateResearch
+            ? (
+              <p data-testid="product" className="productNotFound">
+                Nenhum produto foi encontrado
+              </p>
+            )
+            : (
+              <ul hidden={ stateCategory } className="productTable">
+                { list.map((item) => (
+                  <li key={ item.id } data-testid="product" className="productItem">
                     <img src={ item.thumbnail } alt={ item.title } />
-                    <br />
-                  </Link>
-                </li>
-              ))}
-            </ul>)}
+                    <Link to={ `/product/${item.id}` } data-testid="product-detail-link">
+                      { item.title }
+                      <br />
+                      <br />
+                      R$
+                      {' '}
+                      { item.price }
+                    </Link>
+                  </li>
+                ))}
+              </ul>)}
         </div>
       </div>
       // </>

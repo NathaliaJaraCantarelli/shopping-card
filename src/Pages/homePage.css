@@ -44,7 +44,7 @@
 
 .inputSearch {
   background: rgba(255, 255, 255, 0.705);
-  border: 1px outset #bdbaba;
+  border: 5px outset white;
   border-radius: 100px;
   box-shadow: 0 0 26px rgba(243, 240, 240, 0.8);
   box-sizing: border-box;
@@ -59,6 +59,9 @@
 .btnSearch {
   align-self: flex-end;
   background-color: rgba(255, 255, 255, 0.356);
+  border-width: 5px;
+  border-color: white;
+  border-style: outset;
   border-radius: 20px;
   box-shadow: 0 0 26px rgba(243, 240, 240, 0.8);
   color: rgba(0, 0, 0, 0.781);
@@ -76,10 +79,11 @@
 .btnCart {
   background: url('../../images/icons8-shopping-cart-48.png') no-repeat center;
   background-color: rgba(255, 255, 255, 0.356);
-  border: none;
+  border-color: white;
+  border-style: outset;
   border-radius: 20px;
   box-shadow: 0 0 26px rgba(243, 240, 240, 0.8);
-  color: rgba(255, 255, 255, 0.781);
+  color: rgba(0, 0, 0, 0.781);
   margin: 30px;
   padding: 20px 30px;
 }
@@ -116,13 +120,13 @@
   text-align: right;
 }
 
-.categoriesUl {
+.categoriesDiv {
   margin-bottom: 40px;
   overflow-y: auto;
   width: 100%;
 }
 
-ul {
+.categoriesUl {
   list-style-image: url('../../images/icons8-direita-24.png');
   margin-left: 40px;
   text-align: left;
@@ -148,18 +152,68 @@ ul {
 }
 
 .containerContent {
-  border: 2px solid red;
-  background: rgba(255, 255, 255, 0.788);
+  background: rgba(245, 244, 244, 0.788);
   box-shadow: 0 0 26px rgba(224, 226, 236, 0.8);
-  display: grid;
-  flex-wrap: row wrap;
   justify-content: center;
   height: 100%;
   overflow-y: auto;
   position: fixed;
   text-align: center;
-  top: 13.5%;
+  top: 15%;
   width: 80%;
+}
+
+.productNotFound {
+  color: #091c57cc;
+  font-size: 36px;
+  font-weight: 600;
+  line-height: 50px;
+  margin: 150px 0;
+  text-shadow: 3px 3px 15px rgba(255, 255, 255, 0.445);
+}
+
+.productTable {
+  /* border: 2px solid red; */
+  align-content: space-between;
+  align-items: stretch;
+  color: #444955;
+  display: flex;
+  flex-flow: row wrap;
+  height: auto;
+  justify-content: space-around;
+  list-style: none;
+  text-decoration: none;
+  width: 95%;
+}
+
+.productItem {
+  align-items: center;
+  background-color: white;
+  border: 2px solid white;
+  box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.205);
+  color: #444955; 
+  display: flex;
+  flex-flow: column wrap;
+  font-size: 18px;
+  font-weight: 700;
+  height: auto;
+  justify-content: center;
+  margin: 10px 0;
+  text-align: center;
+  text-decoration: none;
+  text-shadow: 3px 3px 15px rgba(255, 255, 255, 0.445);
+  width: 20%;
+}
+
+.productItem:link {
+  color: #444955; 
+  text-decoration: none;
+}
+
+img {
+  height: 200px;
+  margin: auto;
+  /* width: 160px; */
 }
 
 /* .pPesquisa {
