@@ -152,8 +152,8 @@ class ShoppingCard extends Component {
           </div>
         </div>
       </div>
+
     );
   }
 }
-
 export default ShoppingCard;

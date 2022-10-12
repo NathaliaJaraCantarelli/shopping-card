@@ -240,6 +240,7 @@ class Product extends React.Component {
                   <p data-testid="review-card-evaluation">{valor.textareaInptR}</p>
                 </div>))}
             </div>
+
           </div>
         </div>
       </div>
