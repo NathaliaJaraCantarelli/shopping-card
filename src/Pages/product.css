@@ -1,13 +1,12 @@
-.containerGeralSC {
+.containerGeralPr {
   display: flex;
-  flex-direction: row;
-  height: 100%;
-  justify-content: flex-end;
-  margin: 0 auto;
+  flex-flow: column wrap;
+  height: auto;
+  margin: 0;
   width: 100%;
 }
 
-.containerHeaderSC {
+.containerHeaderPr {
   align-items: center;
   background: linear-gradient(123.66deg, white 12.08%, #9b9c9cb4 86.52%);
   box-shadow: 0 0 26px inset rgba(245, 244, 244, 0.959);
@@ -19,7 +18,7 @@
   width: 100%;
 }
 
-.titleHeaderSC {
+.titleHeaderPr {
   background: url('../../images/logo.jpeg') no-repeat center;
   background-size: cover;
   box-shadow: 26px 26px 26px rgba(255, 255, 255, 0.945);
@@ -32,12 +31,12 @@
   width: 10rem;
 }
 
-.containerBtnCartSC {
+.containerBtnCartPr {
   height: 100%;
   margin-right: 200px;
 }
 
-.btnCartSC {
+.btnCartPr {
   background: url('../../images/icons8-shopping-cart-48.png') no-repeat center;
   background-color: rgba(255, 255, 255, 0.356);
   border-color: white;
@@ -48,54 +47,31 @@
   padding: 20px 30px;
 }
 
-.btnCartSC:hover {
+.btnCartPr:hover {
   background-color: rgba(255, 255, 255, 0.007);
   border-radius: 20px;
   box-shadow: 0 0 26px rgba(243, 240, 240, 0.8);
 }
 
-.btnCartSC:disabled {
+.btnCartPr:disabled {
   background: #01218115 12.08%;
   color: rgba(255, 255, 255, 0.356);
 }
 
-.containerContentSC {
+.containerContentPr {
+  align-items: center;
   background: rgba(245, 244, 244, 0.788);
   box-shadow: 0 0 26px inset rgba(245, 244, 244, 0.959);
-  justify-content: center;
-  height: 100%;
-  overflow-y: auto;
-  position: fixed;
-  text-align: center;
+  color:  #444955;
+  display: flex;
+  height: 600px;
+  justify-content: space-evenly;
+  margin: auto; 
   top: 19.4%;
   width: 100%;
 }
 
-.shoppingCartEmptyMessageSC {
-  color: #091c57cc;
-  font-size: 36px;
-  font-weight: 600;
-  line-height: 50px;
-  margin: 150px 0;
-  text-shadow: 3px 3px 15px rgba(255, 255, 255, 0.445);
-}
-
-.productTableSC {
-  align-content: space-between;
-  align-items: stretch;
-  color: #444955;
-  display: flex;
-  flex-flow: row wrap;
-  height: auto;
-  justify-content: space-around;
-  list-style: none;
-  margin: auto;
-  text-decoration: none;
-  width: 90%;
-}
-
-.btnFinalSC {
-  align-self: flex-end;
+.btnAddPr, .btnRatePr {
   background-color: #9b9c9cb4 0.356;
   border-color: white;
   border-style: outset;
@@ -109,15 +85,36 @@
   padding: 20px 30px;
 }
 
-.btnFinalSC:hover {
+.btnAddPr:hover, .btnRatePr:hover {
   background-color: rgba(255, 255, 255, 0.007);
-  border-radius: 20px;
-  box-shadow: 0 0 26px rgba(243, 240, 240, 0.8);
 }
 
-
-.productItemSC {
+.productItemPr {
   align-items: center;
+  background-color: white;
+  border: 2px solid white;
+  box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.205);
+  color: #444955;
+  display: flex;
+  flex-flow: column wrap;
+  font-size: 18px;
+  font-weight: 700;
+  height: 90%;
+  justify-content: center;
+  text-align: center;
+  text-decoration: none;
+  text-shadow: 3px 3px 15px rgba(255, 255, 255, 0.445);
+  top: 30%;
+  width: 50%;
+}
+
+.imgP {
+  height: 200px;
+  margin: auto;
+}
+
+.containerFormPr {
+  align-items:flex-start;
   background-color: white;
   border: 2px solid white;
   box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.205);
@@ -126,37 +123,46 @@
   flex-flow: column wrap;
   font-size: 18px;
   font-weight: 700;
-  height: auto;
-  justify-content: center;
-  margin: 10px 0;
+  height: 90%;
+  justify-content: space-around;
   text-align: center;
   text-decoration: none;
   text-shadow: 3px 3px 15px rgba(255, 255, 255, 0.445);
-  width: 20%;
+  width: 30%;
 }
 
-.imgSC {
-  height: 200px;
-  margin: auto;
-}
-
-.btnPlusMinusXSC {
-  align-self: flex-end;
-  background-color: #9b9c9cb4 0.356;
-  border-color: white;
-  border-style: outset;
+.txtInputPr {
+  align-items: center;
+  background-color: rgba(155, 156, 156, 0.1);
+  border: 5px outset white;
   border-radius: 20px;
-  border-width: 5px;
   box-shadow: 0 0 26px rgba(243, 240, 240, 0.8);
-  color: rgba(0, 0, 0, 0.781);
-  font-size: 30px;
+  box-sizing: border-box;
+  color: #5a5959;
+  font-size: 20px;
   font-weight: 700;
-  margin: 0 0 10px;
-  padding: 15px 25px;
+  height: 80%;
+  margin: 8px 0;
+  padding: 12px 20px;
+  width: 100%;
 }
 
-.btnPlusMinusXSC:hover {
-  background-color: rgba(255, 255, 255, 0.007);
+.inputEmailPr {
+  background-color: rgba(155, 156, 156, 0.1);
+  border: 5px outset white;
   border-radius: 20px;
   box-shadow: 0 0 26px rgba(243, 240, 240, 0.8);
+  box-sizing: border-box;
+  color: #5a5959;
+  font-size: 20px;
+  font-weight: 700;
+  padding: 10px 20px;
+  width: 100%;
+}
+
+.inputRate{
+  color: #5a5959;
+  font-size: 20px;
+  font-weight: 700;
+  margin: 20px;
 }

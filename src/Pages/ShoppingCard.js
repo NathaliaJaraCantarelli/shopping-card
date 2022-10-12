@@ -1,19 +1,11 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import { getCategories, getProductsFromCategoryAndQuery, getProductById }
-  from '../services/api';
 import './shoppingCard.css';
 
 class ShoppingCard extends Component {
   constructor() {
     super();
     this.state = {
-      categories: [],
-      productsFromCategory: [],
-      stateCategory: false,
-      list: [],
-      stateResearch: false,
-      valueInput: '',
       listShoppingCard: [],
     };
   }
@@ -91,57 +83,72 @@ class ShoppingCard extends Component {
                 <button
                   type="button"
                   data-testid="checkout-products"
+                  className="btnFinalSC"
                 >
                   Finalizar compra
                 </button>
               </Link>
             )}
+            <div className="productTableSC">
+              { listShoppingCard.length > 0 ? listShoppingCard.map((item, ind) => (
 
-            { listShoppingCard.length > 0 ? listShoppingCard.map((item, ind) => (
-
-              <section
-                key={ ind }
-              >
-                <p data-testid="shopping-cart-product-name">{item[0].title}</p>
-                <img src={ item[0].thumbnail } alt={ item[0].title } />
-                <p>{item[0].price}</p>
-                <p data-testid="shopping-cart-product-quantity">
-                  { `Quantidade ${item.length}`}
-                </p>
-                <button
-                  type="button"
-                  data-testid="remove-product"
-                  onClick={ this.removeItem }
-                  name={ item[0].id }
+                <section
+                  key={ ind }
+                  className="productItemSC"
                 >
-                  X
-                </button>
-                <button
-                  name={ item[0].id }
-                  type="button"
-                  value="sum"
-                  onClick={ this.mudaQuantItem }
-                  data-testid="product-increase-quantity"
+                  <img
+                    src={ item[0].thumbnail }
+                    alt={ item[0].title }
+                    className="imgSC"
+                  />
+                  <p data-testid="shopping-cart-product-name">{item[0].title}</p>
+                  <p>
+                    R$
+                    {item[0].price}
+                  </p>
+                  <p data-testid="shopping-cart-product-quantity">
+                    { `Quantidade ${item.length}`}
+                  </p>
+                  <div>
+                    <button
+                      className="btnPlusMinusXSC"
+                      type="button"
+                      data-testid="remove-product"
+                      onClick={ this.removeItem }
+                      name={ item[0].id }
+                    >
+                      x
+                    </button>
+                    <button
+                      className="btnPlusMinusXSC"
+                      name={ item[0].id }
+                      type="button"
+                      value="sum"
+                      onClick={ this.mudaQuantItem }
+                      data-testid="product-increase-quantity"
+                    >
+                      +
+                    </button>
+                    <button
+                      className="btnPlusMinusXSC"
+                      type="button"
+                      name={ item[0].id }
+                      value="sub"
+                      onClick={ this.mudaQuantItem }
+                      data-testid="product-decrease-quantity"
+                    >
+                      -
+                    </button>
+                  </div>
+                </section>
+              )) : (
+                <p
+                  data-testid="shopping-cart-empty-message"
+                  className="shoppingCartEmptyMessageSC"
                 >
-                  +
-                </button>
-                <button
-                  type="button"
-                  name={ item[0].id }
-                  value="sub"
-                  onClick={ this.mudaQuantItem }
-                  data-testid="product-decrease-quantity"
-                >
-                  -
-                </button>
-              </section>
-            )) : (
-              <p
-                data-testid="shopping-cart-empty-message"
-                className="shoppingCardEmptyMessageSC"
-              >
-                Seu carrinho está vazio
-              </p>)}
+                  Seu carrinho está vazio
+                </p>)}
+            </div>
           </div>
         </div>
       </div>
